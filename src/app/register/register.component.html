@@ -1,0 +1,173 @@
+<div class="container pt-5 mt-5 ">
+    <div class="row Roboto pt-3" dir="ltr">
+
+        <div class="col-md-6 p-5 sign-up" data-aos="fade-right" data-aos-duration="1500">
+            <h4 class=" text-center Roboto fw-bolder pt-5 "><i class="fa-solid fa-user-plus"></i> Sign Up</h4>
+            <form [formGroup]="registerForm" (ngSubmit)="handelSubmit()">
+                <div class="container-form">
+                    <div class="inputGroup my-2">
+                        <!-- // name -->
+                        <!-- <label for="firstname"> First Name :</label> -->
+
+                        <input placeholder="Name" formControlName="Name" type="text" class="form-control my-1">
+                        <div *ngIf="registerForm.controls.Name.invalid &&registerForm.controls.Name.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.Name.errors?.required">First Name required</p>
+                            <p *ngIf="registerForm.controls.Name.errors?.minlength">First Name Minumim Length
+                                should
+                                be 3</p>
+                            <p *ngIf="registerForm.controls.Name.errors?.maxlength">First Name Maximum Length
+                                should
+                                be 15</p>
+                        </div>
+                    </div>
+                    <div class="inputGroup my-2">
+                        <!-- Email -->
+                        <!--   <label  for="Email"> Email :</label> -->
+                        <input placeholder="Email" id="Email" formControlName="Email" type="Email"
+                            class="form-control my-1">
+                        <div *ngIf="registerForm.controls.Email.invalid &&registerForm.controls.Email.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.Email.errors?.required">Email required</p>
+                            <p *ngIf="registerForm.controls.Email.errors?.min">Email Minumim should be 3</p>
+                            <p *ngIf="registerForm.controls.Email.errors?.max">Email Maximum should be 15</p>
+                        </div>
+                    </div>
+
+
+                    <div class="inputGroup my-2">
+                        <!-- password -->
+                        <input placeholder="Password" id="Password" formControlName="Password" type="Password"
+                            class="form-control my-1">
+                        <div *ngIf="registerForm.controls.Password.invalid &&registerForm.controls.Password.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.Password.errors?.required">Password required</p>
+                            <p *ngIf="registerForm.controls.Password.errors?.pattern">password required</p>
+
+                        </div>
+                    </div>
+
+                    <div class="inputGroup my-2">
+                        <!-- // phoneNumber -->
+                        <input placeholder="Phone Number" id="Last_Name" formControlName="PhoneNumper" type="text"
+                            class="form-control my-1  ">
+                        <div *ngIf="registerForm.controls.PhoneNumper.invalid &&registerForm.controls.PhoneNumper.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.PhoneNumper.errors?.required">Phone Number required</p>
+                            <p *ngIf="registerForm.controls.PhoneNumper.errors?.minlength">Last Name Minumim Length
+                                should
+                                be
+                                3</p>
+                            <p *ngIf="registerForm.controls.PhoneNumper.errors?.maxlength">Last Name Maximum Length
+                                should
+                                be
+                                15</p>
+                        </div>
+                    </div>
+
+                    <div class="inputGroup my-2">
+                        <!-- // Country -->
+                        <input placeholder="Country" id="Country" formControlName="Country" type="text"
+                            class="form-control my-1">
+                        <div *ngIf="registerForm.controls.Country.invalid &&registerForm.controls.Country.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.Country.errors?.required">Country required</p>
+                            <p *ngIf="registerForm.controls.Country.errors?.min">Country Minumim should be 3</p>
+                            <p *ngIf="registerForm.controls.Country.errors?.max">Country Maximum should be 15</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-control input my-4">
+                        <label class="text-muted" for="role">Choose Role :</label>
+
+                        <select class="mx-3 px-3" formControlName="role" name="role" id="role">
+                            <option class="form-control p-2" value="Client">Client</option>
+                            <option class="form-control p-2"  value="UserBuyer">Seller</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <!-- city -->
+                        <input placeholder="City" formControlName="City" type="text" class="form-control my-1">
+                        <!-- City -->
+                        <div *ngIf="registerForm.controls.City.invalid &&registerForm.controls.City.touched"
+                            class=" text-danger  p-1 ">
+                            <p *ngIf="registerForm.controls.City.errors?.required"> City required</p>
+                            <p *ngIf="registerForm.controls.City.errors?.minlength"> City Minumim Length
+                                should
+                                be 3</p>
+                            <p *ngIf="registerForm.controls.City.errors?.maxlength">First City Maximum Length
+                                should
+                                be 15</p>
+                        </div>
+
+                    </div>
+
+                    <div class="Photo">
+
+
+                        <!-- upload photo -->
+
+                        <div>
+                            <input type="file" (change)="handelimage($event)" id="photo"
+                                placeholder="please enter the photos" class="form-control bg-main main-color" />
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="w-100">
+                        <button id="submit" type="submit"
+                            class="btn btn-success mt-3 bg-dark text-white w-100 p-2 ">Create Account</button>
+
+
+                        <div class="w-100 loginWithGoogle  text-center m-auto">
+                            <div
+                                class=" text-center  bg-main shadow-x mt-5 rounded-1 p-3 d-flex justify-content-center align-content-center ">
+                                <i class="fa-brands fa-google mx-4 main-color shadow bg-black p-1 "></i>
+                                <span class=" align-baseline text-white mt-1 ">Sign Up With Google</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="my-3">
+                    <p class="text-black text-center mx-3 p-2 fs-6">Aleardy Have Account ? <a routerLink="/login"> Sign
+                            in</a> </p>
+
+                </div>
+                <div class="w-100 protecttion text-center m-auto">
+                    <p class=" ">
+                        This site is protected by recaptcha and the google privacy policy
+                    </p>
+                    <p> &copy; Copyright 2022<span class="fw-bold"> </span> </p>
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+        <div class="col-md-6 photo" data-aos="fade-left" data-aos-duration="1500">
+
+            <div class="border w-100 h-100 p-5 ">
+                <img class="w-100 mt-5 pt-3" src="../../assets/Photo/sign-up/clay-banks-R4Kz9SNajR8-unsplash.jpg"
+                    alt="">
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

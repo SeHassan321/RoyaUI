@@ -1,0 +1,12 @@
+.data-section{ 
+    border-bottom: 1px solid rgba(128, 128, 128 , .5) ;
+    margin-top: 10px;
+    padding: 10px;
+
+}
+.imge-user {
+    width: 30px !important ; 
+}
+.commnet-data {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}

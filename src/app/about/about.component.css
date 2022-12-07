@@ -1,0 +1,29 @@
+.border-bottom{
+    border-bottom: 1px solid rgb(128, 128, 128, .7);
+    padding-bottom: 40px;
+}
+.border-top  {
+    border-top: 1px solid rgb(128, 128, 128, .7);
+    padding-bottom: 40px;
+}
+.empolyee {
+    background-size: cover;
+    height: 420px;
+    overflow: hidden;
+}
+.data {
+    height: 100%;
+    width: 100%;
+    padding-top: 150px;
+    background-color: rgba(128, 128, 128, .6);
+    top: 100%;
+    transition: all 1s;
+    position: absolute;
+    transition: all 1s;
+}
+.empolyee:hover .data {
+    top: 0px;
+}
+.col-md-4 {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}

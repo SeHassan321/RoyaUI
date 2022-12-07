@@ -1,0 +1,354 @@
+
+<section>
+  <section class="Roboto mt-5" style="background-color: #eee" dir="ltr">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 text-center m-auto">
+          <ol class="breadcrumb mb-0">
+            <li class="mx-3">
+              <button class="btn btn-outline-dark" *ngIf="roleSatus" (click)="MainData()">
+                My Product
+              </button>
+            </li>
+            <li class="mx-3">
+              <button class="btn btn-outline-dark" *ngIf="roleSatus" (click)="AddProduct()">
+                Add Product
+              </button>
+            </li>
+            <li class="mx-3">
+              <button class="btn btn-outline-dark" (click)="Booking()">
+                Booking
+              </button>
+            </li>
+            <li class="mx-3">
+              <button class="btn btn-outline-dark" (click)="favourtList()">
+                My Favourit List
+              </button>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img [src]="profileData.image" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+            <h5 class="my-3">{{ profileData.name }}</h5>
+            <p class="text-muted mb-1">{{ profileData.role }}</p>
+            <p class="text-muted mb-4">{{ profileData.city }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 card mb-4 pt-3">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Full Name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ profileData.name }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Email</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ profileData.email }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Phone</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ profileData.phone }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Address</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ profileData.city }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section *ngIf="isProfile" class="favouritList container">
+  <h3 class="text-center my-3 p-3 bg-main text-black rounded card">العقارات</h3>
+  <div class="row">
+    <div *ngFor="let item of profileData?.products" class="col-md-6 p-5 border" dir="ltr">
+      <div class="img">
+        <img class="w-100" [src]="item?.images[0]?.name" alt="" />
+        <h4 class="text-center p-3 bg-black text-white">{{ item?.name }}</h4>
+
+        <button class="btn btn-info w-100">
+          <a routerLink="/ProductDetails/{{ item.id }}" class="text-white Roboto">التفاصيل</a>
+        </button>
+        <button class="btn btn-primary w-100">
+          <h5 (click)="getId(item.id, item?.name)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">
+            تعديل
+          </h5>
+        </button>
+        <button class="btn btn-danger w-100">
+          <h5 (click)="getId(item.id, item?.name)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            حذف العقار
+          </h5>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="isFavourotList" class="favouritList container">
+  <h3 class="text-center my-3 p-3 bg-main text-black rounded card">
+    Your Favourit List
+  </h3>
+  <div class="row">
+    <div *ngFor="let item of profileData?.favoritLists" class="col-md-6 p-5 border" dir="ltr">
+      <div class="img">
+        <img class="w-100" [src]="item?.productfavourite.images[0]?.name" alt="" />
+        <h4 class="text-center p-3 bg-black text-white">
+          {{ item?.productfavourite.name }}
+        </h4>
+        <button class="btn btn-primary w-100">
+          <a routerLink="/ProductDetails/{{ item.productId }}" class="text-white Roboto">Details</a>
+        </button>
+
+        <button (click)="DeleteFav(item?.id)" class="btn btn-danger w-100 Roboto my-3">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="isBooking" class="Booking">
+  <div class="container">
+    <h3 class="text-center my-3 p-3 bg-main text-black rounded card">
+      Booking
+    </h3>
+
+    <div class="row mt-3" dir="ltr">
+      <div class="col-md-6 p-5" *ngFor="let item of profileData?.bookings">
+        <img class="w-100" [src]="item.image" alt="" />
+        <h4 class="text-center p-3 bg-black text-white">
+          {{ item.productName }}
+        </h4>
+        <button class="btn btn-primary w-100">
+          <a routerLink="/ProductDetails/{{ item.productId }}" class="text-white Roboto">Details</a>
+        </button>
+        <button (click)="DeleteBooking(item?.id)" class="btn btn-danger w-100 Roboto my-3">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container"></div>
+</section>
+
+<section *ngIf="isAddProdct" class="AddProduct">
+  <div class="container mt-5" dir="rtl">
+    <h3 class="text-center my-3 p-3 bg-main text-black rounded card">
+      اضف عقار جديد
+    </h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="addHotelForm" (ngSubmit)="handelSubmit(addHotelForm)">
+          <input type="text" class="form-control my-3" placeholder="اسم العقار " formControlName="Name" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Name')?.errors != null &&
+              addHotelForm.get('Name')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Name')?.errors?.['required']">
+              أدخل أسم العقار
+            </p>
+          </div>
+
+          <textarea type="text" class="form-control my-3" placeholder="الوصف" formControlName="Description" cols="10"
+            rows="20"></textarea>
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Description')?.errors != null &&
+              addHotelForm.get('Description')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Description')?.errors?.['required']">
+              أدخل الوصف
+            </p>
+          </div>
+
+          <input type="text" class="form-control my-3" placeholder="نوع العقار" formControlName="Type" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Type')?.errors != null &&
+              addHotelForm.get('Type')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Type')?.errors?.['required']">
+              أدخل نوع العقار
+            </p>
+          </div>
+          <input type="text" class="form-control my-3" placeholder="العنوان" formControlName="address" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('address')?.errors != null &&
+              addHotelForm.get('address')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('address')?.errors?.['required']">
+              أدخل نوع العقار
+            </p>
+          </div>
+
+          <input type="number" class="form-control my-3" placeholder=" السعر" formControlName="Price" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Price')?.errors != null &&
+              addHotelForm.get('Price')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Price')?.errors?.['required']">
+              السعر
+            </p>
+          </div>
+
+          <label for="ImagesFile">يرجى ادخال 4 صور و تسمية الصورة الرئيسية 1
+          </label>
+          <input type="file" id="ImagesFile" multiple class="form-control my-3" (change)="handelimage($event)"
+            placeholder="صورة الفندق" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('ImagesFile')?.errors != null &&
+              addHotelForm.get('ImagesFile')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('ImagesFile')?.errors?.['required']">
+              أدخل الصور
+            </p>
+          </div>
+          <div class="AddInaddComponent-div">
+            <button class="btn btn-primary AddInaddComponent-btn">أضافة</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">
+          تعديل العقار
+          <span class="fw-bold">{{ nameOFProductYouWillDelete }}</span>
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addHotelForm" (ngSubmit)="handelSubmit(addHotelForm)">
+          <input type="text" class="form-control" placeholder="اسم العقار " formControlName="Name" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Name')?.errors != null &&
+              addHotelForm.get('Name')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Name')?.errors?.['required']">
+              أدخل أسم العقار
+            </p>
+          </div>
+
+          <textarea type="text" class="form-control" placeholder="الوصف" formControlName="Description" cols="10"
+            rows="20"></textarea>
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Description')?.errors != null &&
+              addHotelForm.get('Description')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Description')?.errors?.['required']">
+              أدخل الوصف
+            </p>
+          </div>
+
+          <input type="text" class="form-control" placeholder="نوع العقار" formControlName="Type" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Type')?.errors != null &&
+              addHotelForm.get('Type')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Type')?.errors?.['required']">
+              أدخل نوع العقار
+            </p>
+          </div>
+          <input type="text" class="form-control" placeholder="العنوان" formControlName="address" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('address')?.errors != null &&
+              addHotelForm.get('address')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('address')?.errors?.['required']">
+              أدخل نوع العقار
+            </p>
+          </div>
+
+          <input type="number" class="form-control" placeholder=" السعر" formControlName="Price" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('Price')?.errors != null &&
+              addHotelForm.get('Price')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('Price')?.errors?.['required']">
+              السعر
+            </p>
+          </div>
+
+          <label for="ImagesFile">يرجى ادخال 4 صور و تسمية الصورة الرئيسية 1
+          </label>
+          <input type="file" id="ImagesFile" multiple class="form-control" (change)="handelimage($event)"
+            placeholder="صورة العقار" />
+          <div class="alert alert-danger" *ngIf="
+              addHotelForm.get('ImagesFile')?.errors != null &&
+              addHotelForm.get('ImagesFile')?.touched
+            ">
+            <p class="custom-text-danger" *ngIf="addHotelForm.get('ImagesFile')?.errors?.['required']">
+              أدخل الصور
+            </p>
+          </div>
+          <div class="AddInaddComponent-div">
+            <button class="btn btn-primary AddInaddComponent-btn" data-bs-dismiss="modal">
+              أضافة
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="staticBackdropLabel">حذف العقار</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" dir="rtl">
+        هل انت متأكد من حذف العقار
+        <span class="fw-bold">{{ nameOFProductYouWillDelete }}</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          ألغاء
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="deleteProduct(productIdBeforDeleted)">
+          تأكيد الحذف
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

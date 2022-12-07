@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+html,
+body {
+    font-family: "FontMU" ;
+    overflow-x: hidden;
+/*     overflow: hidden;
+ */}
+.main-color {
+    color: rgb(194, 133, 53) !important;
+}
+.Roboto {
+    font-family: 'Roboto', sans-serif !important;
+
+}
+.arabicFont {
+    font-family: "FontMU" !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@200;300;400;600;700;800;900&display=swap');
+@font-face {
+    font-family: "FontMU";
+    src: url("assets/fonts/MU.ttf") format("truetype");
+}
+.bg-main {
+    background-color:var(--main-bg) !important;
+}
+:root {
+    --main-color:rgb(194, 133, 53);
+    --main-bg: #C28535;
+}
+.layer {
+    background-color: rgba(0, 0, 0, .6);
+}
+nav{
+    position: sticky !important; 
+    left: 0px ;
+    right: 0px ; 
+}
+
+.protecttion {
+    font-size: 10px;
+    
+}
+
+
+

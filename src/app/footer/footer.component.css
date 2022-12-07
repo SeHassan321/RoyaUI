@@ -1,0 +1,26 @@
+footer {
+    background-image: url("../../assets/Photo/stephan-bechert-yFV39g6AZ5o-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Arial";
+
+}
+
+.cards {
+    width: 110px;
+}
+
+h5 {
+    font-weight: bold;
+    color: var(--main-color);
+    font-size: 18px !important;
+}
+
+@media screen and (max-width:750px) {
+
+footer {
+    text-align: center;
+}
+
+}

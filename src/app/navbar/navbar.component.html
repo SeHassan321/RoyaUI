@@ -1,0 +1,89 @@
+<nav dir="rtl" class="navbar navbar-expand-lg navbar-light arabicFont" (scroll)="onScroll()"
+  [ngClass]="navbarfixed? 'fixed' : 'nofixed'">
+  <div class="container">
+    <i class=" main-header fa-solid fa-house fs-3 fw-normal main-color"></i>
+
+    <!--  <div class="w-50">
+            <img class="w-25" src="../../assets/Photo/logo.png" alt="">
+
+        </div> -->
+    <a class="main-header navbar-brand fs-2 fw-normal main-color arabicFont" href="#" data-aos="fade-down"
+      data-aos-duration="1000" data-aos-easing="linear">
+      رؤية
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0 arabicFont">
+        <li class="nav-item">
+          <a class="nav-link active mx-2 fs-6" aria-current="page" routerLink="home">الرئيسيه</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 fs-6" aria-current="page" routerLink="about">
+            من نحن</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLogin" class="nav-link mx-2 fs-6" aria-current="page" href="#">العروض العقاریة</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item">
+          <a *ngIf="isLogin" class="nav-link mx-2 fs-6" aria-current="page" href="#">خدماتنا</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLogin" class="nav-link mx-2 fs-6" aria-current="page" routerLink="ProductDetails">تواصل معنا</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!isLogin" class="nav-link mx-2 fs-6" aria-current="page" routerLink="login">
+            تسجيل الدخول
+          </a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!isLogin" class="nav-link mx-2 fs-6" aria-current="page" routerLink="register">
+            مستخدم جديد</a>
+        </li>
+      </ul>
+      <div class="icons">
+        <i class="icon fa-solid fa-magnifying-glass fs-6 text-white mx-2"></i>
+        <i class="icon fa-solid fa-brands fa-facebook fs-6 text-white mx-2"></i>
+        <i class="icon fa-solid fa-brands fa-instagram fs-6 text-white mx-2"></i>
+        <i class="icon fa-solid fa-brands fa-twitter fs-6 text-white mx-2"></i>
+      </div>
+
+      <div *ngIf="isLogin" class="dropdown">
+        <div class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img style="width: 30px; border-radius: 50%" [src]="profileData.image" alt="" />
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a class="dropdown-item" aria-current="page" routerLink="register" (click)="LogOut()">
+              تسجيل الخروج</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="profile">الملف الشخصي</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white Roboto mt-3">{{profileData.name}}</p> 
+      </div>
+    </div>
+  </div>
+  <!--   <div class="btn-group ms-2">
+        <a *ngIf="isLogin" routerLinkActive="active" class=" dropdown-toggle text-white "
+          data-bs-toggle="dropdown"><img src="../../assets/Photo/man-avatar-thinking-design-vector-32671941.jpg" class="img-fluid rounded-circle w-25 " id="imageuser" alt=""></a>
+        <ul class="dropdown-menu">
+          <span>Hello, moahmed</span>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li> <a class="dropdown-item" *ngIf="isLogin" >Logout</a></li>
+        </ul>
+      </div> -->
+</nav>

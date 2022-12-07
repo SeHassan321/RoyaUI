@@ -1,0 +1,94 @@
+<div class="container mt-5">
+    <div class=" row" dir="ltr">
+
+        <div class="col-md-6 mt-3 card ms-3 p-3 d-flex justify-content-center align-items-center">
+            <div class="img ">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- ngfor loop using get dynamic value and ngclass for add acive class -->
+                        <div class="carousel-item" *ngFor="let result of ProductDetails.images ; let i = index"
+                            [ngClass]="{'active': i === 0}">
+                            <img class="w-100 " src={{result}} />
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col md-6" dir="rtl">
+            <div class="p-5">
+
+                <div class="data-section">
+                    <i class="fa-solid fa-address-card mx-2"></i>
+                    <span>العنوان</span>
+                    <p class="text-muted mt-2"> {{ProductDetails.address}}</p>
+                </div>
+
+                <div class="data-section">
+                    <i class="fa-solid fa-circle-info mx-2"></i>
+                    <span>التفاصيل</span>
+                    <p class="text-muted mt-2"> {{ProductDetails.description}}</p>
+                </div>
+
+                <div class="data-section">
+                    <i class="fa-solid fa-money-bill mx-2"></i>
+                    <span>السعر</span>
+                    <p class="text-muted mt-2"> {{ProductDetails.price}} جنيه مصري فقط لا غير </p>
+                </div>
+
+
+                <div class="data-section">
+                    <i class="fa-solid fa-comment mx-2"></i>
+                    <span>التعليفات</span>
+                    <form [formGroup]="CommnetForm" (ngSubmit)="AddCommentToProduct()">
+                        <input formControlName="text"  type="text" class="form-control my-2" >
+                        <button type="submit" class="btn btn-primary">أنشر تعليق</button>
+                    </form>
+                    
+                    <div style="height: 150px; width: 100%;" class="border mt-3 overflow-scroll ">
+                        <div class="mt-1 m-2" *ngFor="let commnet of ProductDetails.comments ">
+                            <div class="commnet-data">
+                                <img class=" mx-3 rounded-circle imge-user" [src]="commnet.userImage" alt="">
+                                <span class="p-2">{{commnet.text}}</span>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="buttons mt-4 ">
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <button (click)="addProductToFavouritList()" class="btn btn-primary w-100">
+                                <i class="fa-solid fa-heart text-danger mx-2"></i> اضافه الي المفضله
+                            </button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button (click)="AddProductToBooking()" class="btn btn-info bg-main w-100">
+                                <i class="fa-solid fa-check mx-2"></i>حجز هذا العقار
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>

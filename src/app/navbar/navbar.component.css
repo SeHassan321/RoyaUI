@@ -1,0 +1,69 @@
+nav {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+    position: absolute !important;
+    left: 0px;
+    right: 0px;
+    background-color: black ;
+    z-index: 100;
+}
+
+nav .nav-link {
+    color: white !important;
+    font-weight: 300 !important;
+    transition: all .2s;
+}
+
+nav .nav-link:hover {
+    color: var(--main-color) !important;
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: var(--main-color) !important;
+    cursor: pointer;
+}
+
+#imageuser {
+    width: 100%;
+    height: 50%;
+}
+
+.fixed {
+    position: fixed !important;
+    width: 100%;
+    transition: 1 ease;
+    top: 0px;
+
+ 
+}
+
+.nofixed {
+    position: absolute !important;
+    transition: 1 ease;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+}
+
+@media screen and (max-width:750px) {
+
+
+    .navbar-toggler {
+        background-color: rgb(194, 133, 53) !important;
+
+    }
+
+    .main-header {
+        font-size: 35px !important;
+    }
+
+    .navbar-nav , .icons {
+        text-align: center;
+        padding-left: 50px !important;
+        width: 100%;
+        
+    }
+
+
+}
